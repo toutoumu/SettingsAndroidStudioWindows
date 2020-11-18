@@ -1,0 +1,313 @@
+<templateSet group="自定义代码模板Kotlin">
+  <template name="iiiAdapterTwo-多种类型适配器" value="    // 分隔线&#10;    val decoration = DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL)&#10;    decoration.setDrawable(getDrawable(R.drawable.divider))&#10;    mRecyclerView.addItemDecoration(decoration)&#10;&#10;    // 我发送的&#10;    val ad = MultiItemTypeAdapter&lt;User&gt;(mActivity, mData)&#10;    ad.addItemViewDelegate(object : ItemViewDelegate&lt;User&gt; {&#10;      override fun getItemViewLayoutId() = R.layout.item_test&#10;&#10;      override fun isForViewType(item: User, position: Int): Boolean {&#10;        return true&#10;      }&#10;&#10;      override fun convert(holder: RecyclerViewHolder, item: User, position: Int) {&#10;        holder.setText(R.id.text, item.content)&#10;        Glide.with(this@$Fragment$)&#10;          .load(item.image)&#10;          .apply(RequestOptions().circleCrop())&#10;          .into(holder.getView(R.id.image))&#10;      }&#10;    })&#10;&#10;    // 别人发送的&#10;    ad.addItemViewDelegate(object : ItemViewDelegate&lt;User&gt; {&#10;      override fun getItemViewLayoutId() = R.layout.item_test&#10;&#10;      override fun isForViewType(item: User, position: Int): Boolean {&#10;        return true&#10;      }&#10;&#10;      override fun convert(holder: RecyclerViewHolder, item: User, position: Int) {&#10;        holder.setText(R.id.text, item.content)&#10;        Glide.with(mActivity)&#10;          .load(item.image)&#10;          .apply(RequestOptions().circleCrop())&#10;          .into(holder.getView(R.id.image))&#10;      }&#10;    })&#10;&#10;    // 加载更多&#10;    return LoadMoreWrapper(ad, this@ChartFragment)" description="自己的:多种类型adapter" toReformat="false" toShortenFQNames="false">
+    <variable name="Fragment" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiAdapterOne一种类型适配器" value="// 分割线&#10;    val decoration = DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL)&#10;    decoration.setDrawable(getDrawable(R.drawable.divider))&#10;    mRecyclerView.addItemDecoration(decoration)&#10;    &#10;    mRecyclerView.layoutManager = LinearLayoutManager(context)&#10;&#10;    // 数据项&#10;    val ad = object : RecyclerViewAdapter&lt;User&gt;(mActivity, R.layout.item_test, mData) {&#10;      override fun convert(holder: RecyclerViewHolder, item: User, position: Int) {&#10;        holder.setText(R.id.content, item.name)&#10;        Glide.with(this@$FootballFieldListFragment$)&#10;          .load(item.name)&#10;          .apply(RequestOptions.circleCropTransform())&#10;          .into(holder.getView(R.id.icon)!!)&#10;      }&#10;    }&#10;&#10;    // 加载更多&#10;    return LoadMoreWrapper(ad, this@FootballFieldListFragment)" description="自己的:创建单种类型adapter" toReformat="false" toShortenFQNames="false">
+    <variable name="FootballFieldListFragment" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiRxjavaRequest-列表请求代码摩拜" value="return Api.create($TestApi$::class.java).userlist(&quot;&quot;, &quot;&quot;)" description="自己的:返回服务调用代码模板" toReformat="false" toShortenFQNames="false">
+    <variable name="TestApi" expression="" defaultValue="&quot;TestApi&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiRxJavaRequest-服务请求,并显示对话框" value="    val dialog = BlockDialog.showDialog(mActivity)&#10;    Api.create($TestApi$::class.java)&#10;      .infoLike(articleDetail?.id)&#10;      .retry(BaseApi.timeoutRetry())&#10;      .compose(BaseApi.applySchedulers())&#10;      .compose(bindUntilEvent(FragmentEvent.DESTROY))&#10;      .subscribe({&#10;                   dialog.dismiss()&#10;                   if (!it.isSuccess) {&#10;                   infoToast(it.message)&#10;                     return@subscribe&#10;                   }&#10;                   // todo 调用服务成功业务逻辑代码&#10;                 }, {&#10;                   Timber.e(it)&#10;                   dialog.dismiss()&#10;                   infoToast(it.message)&#10;                 })" description="自己的:访问服务,并显示对话框" toReformat="false" toShortenFQNames="true">
+    <variable name="TestApi" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiToolBar-标题栏初始化" value="activity.toolBar.apply {&#10;      title = &quot;$TITLE$&quot;&#10;      setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)&#10;      setNavigationOnClickListener { mActivity.onBackPressed() }&#10;    }" description="自己的:初始化标题栏" toReformat="false" toShortenFQNames="true">
+    <variable name="TITLE" expression="" defaultValue="&quot;请输入标题&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiDivider-列表分割线" value="    // 分割线&#10;    val decoration = DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL)&#10;    decoration.setDrawable(getDrawable(R.drawable.divider))&#10;    recycler_view.addItemDecoration(decoration)" description="自己的:分割线设置" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiRxJavaZip3-三个请求同时执行" value="return Observable.zip($obs1$, $obs2$, $obs3$, Function3 { t1, t2, t3 -&gt;&#10;      if (!t2.isSuccess) throw IllegalStateException(t2.message)&#10;      if (!t3.isSuccess) throw IllegalStateException(t3.message)&#10;      return@Function3 t1&#10;    })" description="三个参数的 Observable.zip" toReformat="false" toShortenFQNames="true">
+    <variable name="obs1" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="obs2" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="obs3" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiRxJavaZip2-两个请求同时执行" value="return Observable.zip($obs1$, $obs2$, BiFunction { t1, t2 -&gt;&#10;        if (t2.isError) throw IllegalStateException(d.message)&#10;        return@BiFunction t1&#10;      })" description="两个参数的 Observable.zip" toReformat="false" toShortenFQNames="true">
+    <variable name="obs1" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="obs2" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiDialogButtonSheet-底部弹出的选择框" value="val dialogPlus = DialogPlus.newDialog(mActivity)&#10;        .setHeader(R.layout.dialog_header)&#10;        .setAdapter(ArrayAdapter(mActivity, R.layout.dialog_item, R.id.item, arrayOf(&quot;拍摄&quot;, &quot;从手机相册选择&quot;)))&#10;        .setOnItemClickListener { dialog, item, view, position -&gt;&#10;          dialog.dismiss()&#10;          when (position) {&#10;            0 -&gt; takePhoto()&#10;            1 -&gt; selectPhoto()&#10;          }&#10;        }&#10;        .setFooter(R.layout.dialog_footer)&#10;        .setGravity(Gravity.BOTTOM)&#10;        .setMargin(0, 0, 0, 0)&#10;        .setContentHeight(ViewGroup.LayoutParams.WRAP_CONTENT)&#10;        .setContentWidth(ViewGroup.LayoutParams.MATCH_PARENT)&#10;        .create()&#10;      dialogPlus.show()&#10;      dialogPlus.headerView.findViewById&lt;TextView&gt;(R.id.header)&#10;        .text = &quot;请选择照片来源&quot;&#10;      dialogPlus.footerView.findViewById&lt;TextView&gt;(R.id.footer)&#10;        .setOnClickListener { dialogPlus.dismiss() }" description="自己的:底部弹出sheet" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiRxViewClick-避免点击误触的点击事件" value="// 三秒内只允许触发一次点击事件&#10;RxView.clicks($view$)&#10;      .throttleFirst(3000, TimeUnit.MILLISECONDS)&#10;      .subscribe {&#10;        // 执行点击事件&#10;        $END$ &#10;      }" description="自己的:点击事件" toReformat="false" toShortenFQNames="true">
+    <variable name="view" expression="" defaultValue="view" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiClick-点击方法: onViewClick" value="@OnClick(R.id.$IDS$)&#10;fun onViewClick(view: View) {&#10;    when (view.id) {&#10;      R.id.$IDS$ -&gt; { &#10;      $END$&#10;      }&#10;    }&#10;}" description="自己的:添加点击事件" toReformat="false" toShortenFQNames="false">
+    <variable name="IDS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="iiiId-ID前部分: R.id.xx" value="R.id.$FIRST$,$END$" description="自己的:添加id" toReformat="false" toShortenFQNames="false">
+    <variable name="FIRST" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+      <option name="KOTLIN_COMMENT" value="true" />
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_OBJECT_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="iiiLayout-输入R.layout.xxx" value="R.layout.$FIRST$;" description="自己的:添加layout" toReformat="false" toShortenFQNames="false">
+    <variable name="FIRST" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+      <option name="KOTLIN_COMMENT" value="true" />
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_OBJECT_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="iiiTabLayout-TabLayout+ViewPager" value="/**&#10;   * 初始化直播信息区域ViewPager&#10;   *&#10;   * @param viewPager [ViewPager]&#10;   * @param tabLayout [TabLayout]&#10;   */&#10;  private fun setupViewPager(viewPager: ViewPager, tabLayout: TabLayout) {&#10;    tabLayout.tabMode = TabLayout.MODE_SCROLLABLE&#10;    viewPager.adapter = object : FragmentPagerAdapter(childFragmentManager) {&#10;      override fun getItem(position: Int): Fragment {&#10;        return when (position) {&#10;          0 -&gt; $MainFragment1$()&#10;          1 -&gt; $MainFragment2$()&#10;          2 -&gt; $MainFragment3$()&#10;          else -&gt; MainFragment()&#10;        }&#10;      }&#10;&#10;      override fun getCount(): Int {&#10;        return 3&#10;      }&#10;&#10;      override fun getPageTitle(position: Int): CharSequence? {&#10;        return when (position) {&#10;          0 -&gt; &quot;全部&quot;&#10;          1 -&gt; &quot;已付款&quot;&#10;          2 -&gt; &quot;未付款&quot;&#10;          else -&gt; &quot;&quot;&#10;        }&#10;      }&#10;    }&#10;    // 设置监听&#10;    viewPager.addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(tabLayout) {&#10;      override fun onPageSelected(position: Int) {&#10;        super.onPageSelected(position)&#10;        Timber.d(&quot;ViewPager.TabLayoutOnPageChangeListener#onPageSelected&quot;)&#10;      }&#10;    })&#10;    tabLayout.setupWithViewPager(viewPager)&#10;  }" description="自己的:TabLayout ViewPager 布局Kotlin代码" toReformat="false" toShortenFQNames="false">
+    <variable name="MainFragment1" expression="" defaultValue="&quot;MainFragment&quot;" alwaysStopAt="true" />
+    <variable name="MainFragment2" expression="" defaultValue="&quot;MainFragment&quot;" alwaysStopAt="true" />
+    <variable name="MainFragment3" expression="" defaultValue="&quot;MainFragment&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="iiiRxJavaTimer-计时器Timer" value="    // 用于结束倒计时&#10;    private val mSubject = PublishSubject.create&lt;Boolean&gt;()  &#10;    Observable.timer(30, TimeUnit.SECONDS)&#10;      .compose(bindUntilEvent(FragmentEvent.DESTROY))&#10;      .compose(BaseApi.applySchedulers())&#10;      .takeUntil(mSubject)&#10;      .subscribe {&#10;        mActivity.finish()&#10;      }" description="计时器Timer" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiRxJavaInterval-计时器interval" value="// 用于结束倒计时&#10;    private val mSubject = PublishSubject.create&lt;Boolean&gt;()&#10;    Observable.interval(1, TimeUnit.SECONDS)&#10;      .compose(bindUntilEvent(FragmentEvent.DESTROY))&#10;      .compose(BaseApi.applySchedulers())&#10;      .takeUntil (mSubject)&#10;      .subscribe {&#10;        mActivity.finish()&#10;      }" description="计时器interval" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiGlideRoundedCorners-加载圆角图片Glide" value="    // 圆角边框&#10;    val requestOptions = RequestOptions().transform(MultiTransformation(CenterCrop(),&#10;                                                                        RoundedCornersTransformation(SizeUtils.dp2px(5f),&#10;                                                                                                     0, RoundedCornersTransformation.CornerType.ALL)))&#10;&#10;    Glide.with(this@$Fragment$)&#10;      .load(&quot;$url$&quot;)&#10;      .apply(requestOptions)&#10;      .into($Image$)" description="自己的:Glide加载圆角图片" toReformat="false" toShortenFQNames="false">
+    <variable name="Fragment" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <variable name="url" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Image" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiActivityStartWithBundle-带参数启动页面" value="startActivity(CommonActivity::class.java, $FRAGMENT$::class.java, Bundle().apply {&#10;          putString(&quot;KEY&quot;, &quot;&quot;)&#10;        }, $REQUEST_CODE$)" description="自己的:启动页面" toReformat="false" toShortenFQNames="false">
+    <variable name="FRAGMENT" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <variable name="REQUEST_CODE" expression="" defaultValue="&quot;RequestCode&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiActivityStart-不带参数启动页面" value="startActivity(CommonActivity::class.java, $FRAGMENT$::class.java)" description="自己的:启动页面" toReformat="false" toShortenFQNames="false">
+    <variable name="FRAGMENT" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiActivityFinishWithParam" value="        // 关闭页面返回参数&#10;        mActivity.setResult(Activity.RESULT_OK, Intent().apply {&#10;          putExtra(&quot;data&quot;, $PARAM$)&#10;        })&#10;        mActivity.finish()" description="自己的:关闭页面并携带参数" toReformat="false" toShortenFQNames="false">
+    <variable name="PARAM" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiActivityFinishWithOutParam" value="        // 关闭页面返回参数&#10;        mActivity.setResult(Activity.RESULT_OK)&#10;        mActivity.finish()" description="自己的:关闭页面不携带参数" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiBundle-生成Bundle参数" value="val bundle = Bundle().apply {&#10;          $END$&#10;        }" description="自己的:生成Bundle参数" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiToolbarIcons-生成Toolbar右边图标" value="    // 右上角图标&#10;    val rightView = activity.layoutInflater.inflate(R.layout.toolbar_right_image, toolBar, false) as ImageView&#10;    rightView.setImageResource(R.drawable.app_assets_images_mainimg_share)&#10;    (rightView.layoutParams as Toolbar.LayoutParams).gravity = Gravity.CENTER or Gravity.END&#10;    toolBar?.addView(rightView)&#10;    rightView.setOnClickListener {&#10;    // 右上角点击事件&#10;    }" description="自己的:生成Toolbar右边图标" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiGlideCircle-加载圆形图片" value="    // 圆形                           &#10;    Glide.with(this@$Fragment$)&#10;      .load(&quot;$url$&quot;)&#10;      .apply(RequestOptions.circleCropTransform())&#10;      .into($Image$)" description="自己的:Glide加载圆角图片" toReformat="false" toShortenFQNames="false">
+    <variable name="Fragment" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <variable name="url" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Image" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiGlideCenterCrop-加载图片中间部分显示" value="    // 中间部分                          &#10;    Glide.with(this@$Fragment$)&#10;      .load(&quot;$url$&quot;)&#10;      .apply(RequestOptions.centerCropTransform())&#10;      .into($Image$)" description="自己的:Glide加载图片中间部分显示" toReformat="false" toShortenFQNames="false">
+    <variable name="Fragment" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <variable name="url" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Image" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiActivityResult-页面回调处理" value="if (resultCode == Activity.RESULT_OK) {&#10;      when (requestCode) {&#10;        $REQUEST_CODE$ -&gt; {$END$} &#10;      }&#10;    }" description="自己的:页面回调处理" toReformat="false" toShortenFQNames="false">
+    <variable name="REQUEST_CODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiPermission-检测是否有权限权限处理" value="// 注意在方法上添加注解 AfterPermissionGranted , 使得权限请求成功后再次调用这里&#10;// @AfterPermissionGranted($REQUEST_CODE$)&#10;if (EasyPermissions.hasPermissions(mActivity,&#10;                                       Manifest.permission.CAMERA,&#10;                                       Manifest.permission.READ_EXTERNAL_STORAGE,&#10;                                       Manifest.permission.WRITE_EXTERNAL_STORAGE)) {&#10;      // todo 有权限在这里处理逻辑代码&#10;      return&#10;    }&#10;    // 请求权限&#10;    EasyPermissions.requestPermissions(this,&#10;                                       &quot;使用该应用需要以下权限&quot;,&#10;                                       $REQUEST_CODE$,&#10;                                       Manifest.permission.CAMERA,&#10;                                       Manifest.permission.READ_EXTERNAL_STORAGE,&#10;                                       Manifest.permission.WRITE_EXTERNAL_STORAGE)" description="自己的:检测是否有权限权限处理" toReformat="false" toShortenFQNames="false">
+    <variable name="REQUEST_CODE" expression="" defaultValue="&quot;两个请求码一致&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiDialogInput-文本输入对话框" value="// 文本输入对话框&#10;MaterialDialog.Builder(context!!)&#10;              .title(&quot;$TITLE$&quot;)&#10;              .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL)&#10;              .inputRange(2, 8)&#10;              .input(&quot;提示文本&quot;, &quot;初始值&quot;) { _, input -&gt;&#10;                if (input.isBlank()) {&#10;                  infoToast(&quot;$错误提示$&quot;)&#10;                  return@input&#10;                }&#10;                if (!input.toString().isDouble) {&#10;                  infoToast(&quot;请输入正确价格&quot;)&#10;                  return@input&#10;                }&#10;                //  todo 数据处理&#10;                Timber.e(input.toString())&#10;              }&#10;              .negativeText(&quot;取消&quot;)&#10;              .positiveText(&quot;确定&quot;)&#10;              .show()" description="自己的:文本输入对话框" toReformat="false" toShortenFQNames="false">
+    <variable name="TITLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiDialogOkCancel-确认对话框" value="// 确认对话框&#10;MaterialDialog.Builder(mActivity)&#10;      .title(&quot;提示&quot;)&#10;      .content(&quot;确定删除?&quot;)&#10;      .positiveText(&quot;确认&quot;)&#10;      .negativeText(&quot;取消&quot;)&#10;      .onPositive { dialog, which -&gt;&#10;        dialog.dismiss()&#10;        // 确认操作&#10;      }&#10;      .show()" description="自己的:文本输入对话框" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiAdapterGridView-GridView适配器" value="holder.setAdapter(R.id.grid_view, object : ListViewAdapter&lt;$User$&gt;(mActivity, R.layout.item_test,$DATA$ ) {&#10;          override fun convert(viewHolder: ListViewHolder, item: $User$, position: Int) {&#10;            $END$&#10;          }&#10;        })" description="自己的:GridViewAdapter" toReformat="false" toShortenFQNames="false">
+    <variable name="User" expression="" defaultValue="&quot;User&quot;" alwaysStopAt="true" />
+    <variable name="DATA" expression="" defaultValue="&quot;mData&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiSearch-文本框搜索代码段" value="    // 搜索框搜索后跳转搜索结果 文本框添加属性 android:imeOptions=&quot;actionSearch&quot;&#10;    RxTextView.editorActionEvents($search_edit$) { textViewEditorActionEvent -&gt;&#10;      if (textViewEditorActionEvent.actionId() == EditorInfo.IME_ACTION_SEARCH) {&#10;        val searchKey = $search_edit$.text.toString()&#10;          .trim()&#10;        if (searchKey.isEmpty()) {&#10;          infoToast(&quot;请输入搜索内容&quot;)&#10;        }&#10;        // 执行搜索操作&#10;        return@editorActionEvents true&#10;      }&#10;      false&#10;    }&#10;    .subscribe()" description="自己的:创建单种类型adapter" toReformat="false" toShortenFQNames="false">
+    <variable name="search_edit" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiivalidation-表单文本空值验证" value=" val $val$ = $ID$.value&#10;    if ($val$.isEmpty()) {&#10;      infoToast(&quot;请输入$DESC$&quot;)&#10;      return&#10;    }" description="自己的:关闭页面不携带参数" toReformat="true" toShortenFQNames="false">
+    <variable name="val" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiValidationPhone-电话号码验证" value="val phone = $ID$.value&#10;    if (phone.isEmpty() || (!ValidationUtils.isPhone(phone) &amp;&amp; !ValidationUtils.isMobile(phone))) {&#10;      infoToast(&quot;请输入电话号码&quot;)&#10;      return&#10;    }" description="自己的:电话号码验证" toReformat="true" toShortenFQNames="false">
+    <variable name="ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiValidationMobile-手机号验证" value="val mobile = $ID$.value&#10;    if (mobile.isEmpty() ||  !ValidationUtils.isMobile(mobile)) {&#10;      infoToast(&quot;请输入手机号$END$&quot;)&#10;      return&#10;    }" description="自己的:电话号码验证" toReformat="true" toShortenFQNames="false">
+    <variable name="ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiholderSetText-设置文本" value="holder.setText(R.id.$ID$,item.$VALUE$)$END$" description="自己的:关闭页面不携带参数" toReformat="false" toShortenFQNames="false">
+    <variable name="ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiViewModel.of获取 ViewModel" value="// 获取 ViewModel of 里面的参数是指定作用域 为 Fragment 还是 Activity&#10;ViewModelProviders.of(mActivity).get($SearchViewModel$::class.java)" description="获取 ViewModel" toReformat="true" toShortenFQNames="false">
+    <variable name="SearchViewModel" expression="" defaultValue="&quot;ViewModel类的名字&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiViewModel.observe订阅" value="// 订阅 ViewModel&#10;$searchViewModel$.$searchKeyLiveData$.observe(this, Observer {&#10;       &#10;    })" description="获取 订阅 ViewModel" toReformat="false" toShortenFQNames="false">
+    <variable name="searchViewModel" expression="" defaultValue="&quot;ViewModel实例&quot;" alwaysStopAt="true" />
+    <variable name="searchKeyLiveData" expression="" defaultValue="&quot;ViewModel定义的属性名&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiViewModel.removeObservers取消订阅" value="    // 取消订阅ViewModel&#10;    $searchViewModel$.$searchKeyLiveData$.removeObservers(this)&#10;" description="ViewModel取消订阅" toReformat="false" toShortenFQNames="false">
+    <variable name="searchViewModel" expression="" defaultValue="&quot;ViewModel实例&quot;" alwaysStopAt="true" />
+    <variable name="searchKeyLiveData" expression="" defaultValue="&quot;ViewModel变量&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiViewModel.class创建ViewModel类" value="class SearchViewModel(@NonNull application: Application) : AndroidViewModel(application) {&#10;&#10;  /** 搜索关键字变更  */&#10;  var searchKeyLiveData: MutableLiveData&lt;String&gt; = MutableLiveData()&#10;}" description="ViewModel取消订阅" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
+  <template name="iiiinstance: 实例化Fragment" value="    const val PAGE_TYPE = &quot;page_type&quot;&#10;    @JvmStatic&#10;    fun instance(pageType: Int): $FRAGMENT$ {&#10;      return $FRAGMENT$().apply {&#10;        arguments = Bundle().apply {&#10;          putInt(PAGE_TYPE, pageType)&#10;        }&#10;      }&#10;    }" description="自己的:实例化" toReformat="false" toShortenFQNames="false">
+    <variable name="FRAGMENT" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="iiistart: 启动页面方法" value="&#10;  const val DATA =&quot;data&quot;&#10;/**&#10;     * 启动当前页面&#10;     * @param id 详情主键&#10;     * @param baseFragment [BaseFragment]&#10;     * @param requestCode 请求码&#10;     */&#10;    @JvmStatic&#10;    fun start(id: Long, baseFragment: BaseFragment, requestCode: Int = -1) {&#10;      baseFragment.startActivity(CommonActivity::class.java, $FRAGMENT$::class.java, Bundle().apply {&#10;        putLong(DATA, id)&#10;      }, requestCode)&#10;    }" description="自己的:启动页面方法" toReformat="true" toShortenFQNames="false">
+    <variable name="FRAGMENT" expression="kotlinClassName()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="iiiHeaderwapper:HeaderWapper 使用" value="    // header 子标题&#10;    val headerWrapper = object : HeaderWrapper&lt;$CLASS$&gt;(ad, 100) {&#10;&#10;      override fun getItemViewLayoutId() = R.layout.item_header_$NAME$&#10;&#10;      override fun convert(holder: RecyclerViewHolder, position: Int) {&#10;      }&#10;    }" description="ViewModel取消订阅" toReformat="true" toShortenFQNames="false">
+    <variable name="CLASS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_EXPRESSION" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiBackpress:Activity中双击退出应用" value="private var mBackTime: Long = 0&#10;    override fun onBackPressed() {&#10;        val time = System.currentTimeMillis()&#10;        if (time - mBackTime &gt; 2000) {&#10;            showToast(&quot;再按一次退出应用&quot;)&#10;            mBackTime = time&#10;            return&#10;        }&#10;        super.onBackPressed()&#10;    }" description="双击退出应用" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="iiiBackpress:Fragment中双击退出应用" value="private var mBackTime: Long = 0&#10;    override fun onBackPressed():Boolean {&#10;        val time = System.currentTimeMillis()&#10;        if (time - mBackTime &gt; 2000) {&#10;            showToast(&quot;再按一次退出应用&quot;)&#10;            mBackTime = time&#10;            return true&#10;        }&#10;        return super.onBackPressed()&#10;    }" description="双击退出应用" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+</templateSet>

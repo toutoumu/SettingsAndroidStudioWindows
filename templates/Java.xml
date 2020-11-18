@@ -1,0 +1,27 @@
+<templateSet group="自定义代码模板Java">
+  <template name="iiiDivider--RecyclerView分割线" value="// 可以添加数据项分割线&#10;DividerItemDecoration decoration = new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL);&#10;decoration.setDrawable(getDrawable(R.drawable.divider));&#10;mRecyclerView.addItemDecoration(decoration);" description="RecyclerView分割线" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiinittoolbar" value="UiUtils.requestStatusBarLight(this, true);&#10;    UiUtils.setCenterTitle(mActivity, getToolBar(), getName());&#10;    getToolBar().setNavigationIcon(R.drawable.ic_back_black);&#10;    getToolBar().setNavigationOnClickListener(v -&gt; getActivity().onBackPressed());" description="公司的:初始化标题栏" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiinitrecyclerview" value="recyclerView.addOnScrollListener(new EndlessScrollListener(this));&#10;    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));&#10;    recyclerView.setAdapter(new AccessControlAdapter(this, mData, this));" description="所有项目:初始化RecyclerView" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiiiirxjava---服务访问带对话框" value="showLoading(&quot;&quot;);&#10;Api.create(MockNetwork.class)&#10;    .postForm(&quot;巴达克&quot;)&#10;    .compose(BaseApi.applySchedulers())&#10;    .retry(BaseApi.timeoutRetry())&#10;    .compose(bindUntilEvent(FragmentEvent.DESTROY_VIEW))&#10;    .subscribe(model -&gt; {&#10;        $END$&#10;    }, e -&gt; {&#10;        closeLoading();&#10;        Timber.e(e);&#10;        showToast(e.getMessage());&#10;    });" description="服务访问带对话框" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="iiionStatusUpdated方法默认模板" value="// 同步更新加载状态&#10;mSwipeRefreshLayout.setRefreshing(status == LoadingStatus.LOADING);&#10;&#10;if (status == LoadingStatus.SUCCESS &amp;&amp; hasData()) {&#10;    initRecycleView(mData);&#10;}" description="onStatusUpdated方法默认模板" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>
