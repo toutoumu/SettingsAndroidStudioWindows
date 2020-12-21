@@ -4,7 +4,7 @@
     <property name="created">2020-12-14T17:08:24</property>
     <property name="ide">AndroidStudio</property>
     <property name="ideVersion">4.1.1.0</property>
-    <property name="modified">2020-12-18T18:09:33</property>
+    <property name="modified">2020-12-21T13:59:39</property>
     <property name="originalScheme">One Dark Vivid Italic</property>
   </metaInfo>
   <console-font>
@@ -1012,7 +1012,9 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
+        <option name="FOREGROUND" value="f9ff48" />
         <option name="BACKGROUND" value="353940" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
@@ -2147,7 +2149,9 @@
     </option>
     <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
+        <option name="FOREGROUND" value="f9ff48" />
         <option name="BACKGROUND" value="353940" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
