@@ -2,6 +2,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/WorkSpace/Android/ControlDemo/projects/equipment/src/main/res/layout/foot_change.xml" value="0.20364583333333333" />
+        <entry key="..\:/WorkSpace/Android/ControlDemo/projects/equipment/src/main/res/layout/foot_device_repair_detail.xml" value="0.20364583333333333" />
+        <entry key="..\:/WorkSpace/Android/ControlDemo/projects/equipment/src/main/res/layout/foot_select_machine.xml" value="0.2574074074074074" />
         <entry key="..\:/WorkSpace/Android/ControlDemo/projects/equipment/src/main/res/layout/item_machine.xml" value="0.2884963768115942" />
         <entry key="..\:/WorkSpace/Android/ControlDemo/projects/equipment/src/main/res/layout/item_machine_select.xml" value="0.1" />
       </map>
