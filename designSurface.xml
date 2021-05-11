@@ -1,0 +1,10 @@
+<application>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/WorkSpace/Android/ControlDemo/projects/equipment/src/main/res/layout/item_machine.xml" value="0.2884963768115942" />
+        <entry key="..\:/WorkSpace/Android/ControlDemo/projects/equipment/src/main/res/layout/item_machine_select.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+</application>
