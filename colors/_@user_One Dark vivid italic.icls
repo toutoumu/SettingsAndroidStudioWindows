@@ -1,11 +1,21 @@
 <scheme name="_@user_One Dark Vivid Italic" version="142" parent_scheme="Darcula">
+  <option name="FONT_SCALE" value="1.0" />
   <metaInfo>
-    <property name="created">2020-11-25T09:41:10</property>
+    <property name="created">2020-12-14T17:08:24</property>
     <property name="ide">AndroidStudio</property>
     <property name="ideVersion">4.1.1.0</property>
-    <property name="modified">2020-11-25T09:46:59</property>
+    <property name="modified">2020-12-21T13:59:39</property>
     <property name="originalScheme">One Dark Vivid Italic</property>
   </metaInfo>
+  <console-font>
+    <option name="EDITOR_FONT_NAME" value="Courier New" />
+    <option name="EDITOR_FONT_SIZE" value="15" />
+  </console-font>
+  <console-font>
+    <option name="EDITOR_FONT_NAME" value="Fira Code" />
+    <option name="EDITOR_FONT_SIZE" value="16" />
+  </console-font>
+  <option name="CONSOLE_LINE_SPACING" value="1.2" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="89ca78" />
     <option name="ANNOTATIONS_COLOR" value="a0a7b4" />
@@ -1002,7 +1012,9 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
+        <option name="FOREGROUND" value="f9ff48" />
         <option name="BACKGROUND" value="353940" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
@@ -1410,7 +1422,9 @@
     </option>
     <option name="MATCHED_BRACE_ATTRIBUTES">
       <value>
+        <option name="FOREGROUND" value="f9ff48" />
         <option name="BACKGROUND" value="515a6b" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="MESSAGE_ARGUMENT">
@@ -2135,7 +2149,9 @@
     </option>
     <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
+        <option name="FOREGROUND" value="f9ff48" />
         <option name="BACKGROUND" value="353940" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
